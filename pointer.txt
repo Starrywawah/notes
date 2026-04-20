@@ -1,0 +1,17 @@
+array =/= pointer
+
+Pointer -> a variable that can point to any memory location 
+
+e.x. in .c file :
+int num[4] = {1,2,3,4};
+printf("%p\n", num); \\get the memory address of the array
+printf("%p\n", &num[0]); \\get the memory address of the first array element
+
+//
+for(i = 0;i<4;i++){
+printf("%p\n", &num[i]);
+}
+
+Pointer in arithmatic
+The * operator is used to dereference a pointer and access the
+value at the address it holds.
