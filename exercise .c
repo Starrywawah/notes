@@ -72,12 +72,55 @@ void reduce(float ostock[][3], int size) {
 
 //Q3
 #include <stdio.h>
+#define ROWS 4
+#define COLS 3
 
-void increase(float stock1D[], int size); 
+void calculate(int marks[ROWS][COLS]);
+void add(int marks[ROWS][COLS]);
+
 int main() {
-    
+    int marks[ROWS][COLS] = {
+        {15, 18, 17},
+        {12, 20, 19},
+        {10, 16, 15},
+        {18, 19, 20}
+    };
+
+    int *p = &marks[0][0];
+
+    int labtest = *(p + (2 * COLS) + 2);
+    printf("Total Marks:\n");
+    calculate(marks);
+
+    add(marks);
 
     return 0;
+}
+
+void calculate(int marks[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        int total = 0;
+        for (int j = 0; j < COLS; j++) {
+            total += *(*(marks + i) + j);
+        }
+        printf("Total marks for Student %d = %d\n", i, total);
+    }
+}
+
+void add(int marks[ROWS][COLS]) {
+    printf("\nUpdated Marks Table (after adding bonus):\n");
+    printf("Student\tQuiz\tAssignment\tLab Test\n");
+
+    for (int i = 0; i < ROWS; i++) {
+        printf("%d\t", i);
+        for (int j = 0; j < COLS; j++) {
+            if (j == 2) {
+                *(*(marks + i) + j) += 2;
+            }
+            printf("%d\t", *(*(marks + i) + j));
+        }
+        printf("\n");
+    }
 }
 
 
