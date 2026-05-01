@@ -1,20 +1,21 @@
 //ATTENTION!!!!!! NOT FINISHED YET!!!
 #include <stdio.h>
+#include <string.h>
 
-void inputdata();
-void converttime();
-void evaluateusage();
+void inputdata(float *m);
+float converttime(float m, float *h);
+void evaluateusage(float h);
 void assessrisk();
-char getYN();
+int getYN();
 
 
 int main() {
     float m, h; //minute, hour
     char c; //choice
     int i = 0;
-    inputdata();
-    converttime();
-    evaluateusage();
+    inputdata(&m);
+    converttime(m, &h);
+    evaluateusage(h);
     assessrisk();
     return 0;
 }
@@ -22,17 +23,17 @@ int main() {
 void inputdata(float *m) {
     do {
     printf("Enter the total number of minutes spent on the Internet per day : ");
-    scanf(" %f", &m);
+    scanf(" %f", m);
 
-    if (m<0 || ){
+    if (*m<0){
         printf("Invalid input! Enter the total number of minutes spent on the Internet per day : ");
     }
     
-    } while (m<0);
+    } while (*m<0);
 }
 
-void converttime(float m, float h) {
-    h = m / 60;
+void converttime(float m, float *h) {
+    *h = m / 60;
 }
 
 void evaluateusage(float h) {
@@ -43,34 +44,47 @@ void evaluateusage(float h) {
     }
 }
 
-void assessrisk(char c) {
+void assessrisk() {
+    int i = 0;
+
     printf("--Yes/No Question--\n\n");
 
     printf("Do you stay online longer than intended?\n");
-    c = getYN();
+    i += getYN();
+
     printf("\nDo people complain about your Internet usage?\n");
-    c = getYN();
+    i += getYN();
+
     printf("\nDo you often say \"just a few more minutes\"?\n");
-    c = getYN();
+    i += getYN();
+
     printf("\nDo you struggle to reduce your Internet usage?\n");
-    c = getYN();
+    i += getYN();
+
     printf("\nDo you hide the amount of time you spend online?\n");
-    c = getYN();
+    i += getYN();
+
+    printf("\nTotal YES responses: %d\n", i);  // REQUIRED
 
     if (i >= 3) {
-        printf("\n\nResult: You are at HIGH RISK of Internet addiction.\n");
+        printf("\nResult: You are at HIGH RISK of Internet addiction.\n");
     } else {
-        printf("\n\nResult: You are at LOW RISK, but monitor your usage\n");
+        printf("\nResult: You are at LOW RISK, but monitor your usage\n");
     }
 }
 
-char getYN(char c, int i = 0) {
-    do {
+int getYN() {
+    char c;
+    
+    while (1) {
         printf("Answer (Y/N) : ");
         scanf(" %c", &c);
 
-        if (!(c=='Y'||c=='y'||c=='N'||c=='n')) {
-            printf("\nInvalid input! Enter Y or N only :");
+        if (c=='Y'||c=='y') return 1;
+            
+        else if (c=='N' || c== 'n') return 0;
+        
+        else printf("\nInvalid input! Enter Y or N only : ");
         }
 
     } while (!(c=='Y'||c=='y'||c=='N'||c=='n'));
