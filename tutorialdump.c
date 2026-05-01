@@ -3,7 +3,7 @@
 #include <string.h>
 
 void inputdata(float *m);
-float converttime(float m, float *h);
+void converttime(float m, float *h);
 void evaluateusage(float h);
 void assessrisk();
 int getYN();
@@ -11,8 +11,7 @@ int getYN();
 
 int main() {
     float m, h; //minute, hour
-    char c; //choice
-    int i = 0;
+
     inputdata(&m);
     converttime(m, &h);
     evaluateusage(h);
@@ -33,7 +32,7 @@ void inputdata(float *m) {
 }
 
 void converttime(float m, float *h) {
-    *h = m / 60;
+    *h = m / 60.0;
 }
 
 void evaluateusage(float h) {
@@ -86,8 +85,4 @@ int getYN() {
         
         else printf("\nInvalid input! Enter Y or N only : ");
         }
-
-    } while (!(c=='Y'||c=='y'||c=='N'||c=='n'));
-
-    if (c=='Y'||c=='y') i++;
 }
