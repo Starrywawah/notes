@@ -1,6 +1,14 @@
-//ATTENTION!!!!!! NOT FINISHED YET!!!
+/***
+
+Name : Margaret Nathania Hartono
+Student ID : CST2509095
+Course code : CST108 (GROUP 1)
+
+TUTORIAL 1
+
+***/
+
 #include <stdio.h>
-#include <string.h>
 
 void inputdata(float *m);
 void converttime(float m, float *h);
@@ -63,7 +71,7 @@ void assessrisk() {
     printf("\nDo you hide the amount of time you spend online?\n");
     i += getYN();
 
-    printf("\nTotal YES responses: %d\n", i);  // REQUIRED
+    printf("\nTotal YES responses: %d\n", i);
 
     if (i >= 3) {
         printf("\nResult: You are at HIGH RISK of Internet addiction.\n");
@@ -83,6 +91,6 @@ int getYN() {
             
         else if (c=='N' || c== 'n') return 0;
         
-        else printf("\nInvalid input! Enter Y or N only : ");
+        else printf("\nInvalid input! Enter Y or N only\n");
         }
 }
