@@ -1,128 +1,130 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LENGTH 51   // 50 characters + 1 for null terminator
+#define MAX 51   //50 characters + 1 for null terminator
 
 int main() {
-    // Variables for book titles
-    char firstTitle[MAX_LENGTH];
-    char copiedTitle[MAX_LENGTH];
-    char secondTitle[MAX_LENGTH];
+    //variables for book titles
+    char title1 [MAX];
+    char copiedTitle[MAX];
+    char title2 [MAX];
 
-    // Variables for tokenization
-    char tempFirst[MAX_LENGTH];
-    char tempSecond[MAX_LENGTH];
+    //variables for tokenization
+    char temp1[MAX];
+    char temp2[MAX];
 
-    // Variables for word counting and longest word
+    //variables for word counting and longest word
     char *token;
-    int wordCount;
+    int wordcount;
 
-    char longestWord[MAX_LENGTH];
+    char longestword[MAX];
 
-    // TASK 1: Prompt librarian to enter the first book title
+    printf("======= University Library Book Data =======\n\n");
+    //prompt librarian to enter the first book title
     printf("Enter the first book title: ");
-    fgets(firstTitle, sizeof(firstTitle), stdin);
+    fgets(title1, sizeof(title1), stdin);
 
-    // Remove newline character using strcspn()
-    firstTitle[strcspn(firstTitle, "\n")] = '\0';
+    //remove newline character using strcspn()
+    title1[strcspn(title1, "\n")] = '\0';
 
-    // Validate input is not empty
-    if (strlen(firstTitle) == 0) {
+    //validate input is not empty
+    if (strlen(title1) == 0) {
         printf("Error: Book title cannot be empty.\n");
         return 1;
     }
 
-    // TASK 2 & 3: Display length of the first title
+    //display length of the first title
     printf("\nLength of the first book title: %lu characters\n",
-           strlen(firstTitle));
+           strlen(title1));
 
-    // TASK 4: Copy title using strcpy()
-    strcpy(copiedTitle, firstTitle);
+    //copy title using strcpy()
+    strcpy(copiedTitle, title1);
 
-    // TASK 5: Display original and copied titles
-    printf("\nOriginal Title: %s\n", firstTitle);
+    //display original and copied titles
+    printf("\nOriginal Title: %s\n", title1);
     printf("Copied Title  : %s\n", copiedTitle);
 
-    // TASK 6: Prompt librarian to enter second book title
+    //prompt librarian to enter second book title
     printf("\nEnter the second book title: ");
-    fgets(secondTitle, sizeof(secondTitle), stdin);
+    fgets(title2, sizeof(title2), stdin);
 
-    // Remove newline character
-    secondTitle[strcspn(secondTitle, "\n")] = '\0';
+    //remove newline character
+    title2[strcspn(title2, "\n")] = '\0';
 
-    // Validate input is not empty
-    if (strlen(secondTitle) == 0) {
+    //validate input is not empty
+    if (strlen(title2) == 0) {
         printf("Error: Second book title cannot be empty.\n");
         return 1;
     }
 
-    // TASK 7 & 8: Compare both titles using strcmp()
+    //compare both titles using strcmp()
     
-    int compareResult = strcmp(firstTitle, secondTitle);
+    int compare = strcmp(title1, title2);
 
     printf("\nComparison Result:\n");
 
-    if (compareResult == 0) {
+    if (compare == 0) {
         printf("Both titles are equal.\n");
-    } else if (compareResult > 0) {
+    } else if (compare > 0) {
         printf("The first title is lexicographically greater than the second title.\n");
     } else {
         printf("The first title is lexicographically smaller than the second title.\n");
     }
 
-    // TASK 9 & 10: Process first title using strtok()
+    //process first title using strtok()
 
-    // Copy original title before tokenization
-    strcpy(tempFirst, firstTitle);
+    //copy original title before tokenization
+    strcpy(temp1, title1);
 
-    wordCount = 0;
-    longestWord[0] = '\0';
+    wordcount = 0;
+    longestword [0] = '\0';
 
-    token = strtok(tempFirst, " ");
+    token = strtok(temp1
+        , " ");
 
     while (token != NULL) {
-        wordCount++;
+        wordcount++;
 
-        // Check for longest word
-        if (strlen(token) > strlen(longestWord)) {
-            strcpy(longestWord, token);
+        //check for longest word
+        if (strlen(token) > strlen(longestword)) {
+            strcpy(longestword, token);
         }
 
         token = strtok(NULL, " ");
     }
 
-    // Display results for first title
+    //display results for first title
     printf("\n--- First Book Title Analysis ---\n");
-    printf("Title: %s\n", firstTitle);
-    printf("Total Words: %d\n", wordCount);
-    printf("Longest Word: %s\n", longestWord);
+    printf("Title: %s\n", title1);
+    printf("Total Words: %d\n", wordcount);
+    printf("Longest Word: %s\n", longestword);
 
-    // TASK 9 & 10: Process second title using strtok()
+    //process second title using strtok()
 
-    // Copy original title before tokenization
-    strcpy(tempSecond, secondTitle);
+    //copy original title before tokenization
+    strcpy(temp2, title2);
 
-    wordCount = 0;
-    longestWord[0] = '\0';
+    wordcount = 0;
+    longestword [0] = '\0';
 
-    token = strtok(tempSecond, " ");
+    token = strtok(temp2, " ");
 
     while (token != NULL) {
-        wordCount++;
+        wordcount++;
 
-        // Check for longest word
-        if (strlen(token) > strlen(longestWord)) {
-            strcpy(longestWord, token);
+        //check for longest word
+        if (strlen(token) > strlen(longestword)) {
+            strcpy(longestword, token);
         }
 
         token = strtok(NULL, " ");
     }
 
-    // Display results for second title
+    //display results for second title
     printf("\n--- Second Book Title Analysis ---\n");
-    printf("Title: %s\n", secondTitle);
-    printf("Total Words: %d\n", wordCount);
-    printf("Longest Word: %s\n", longestWord);
+    printf("Title: %s\n", title2);
+    printf("Total Words: %d\n", wordcount);
+    printf("Longest Word: %s\n", longestword);
 
     return 0;
 }
