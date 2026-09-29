@@ -1,4 +1,6 @@
-//question 1
+//do not run 
+
+//q1
 #include <stdio.h>
 printf("Enter interger : ");
     scanf("%d", &ans1);
@@ -19,3 +21,23 @@ printf("Enter interger : ");
 return 0;
 }
 
+//q2, same as q1 but use 1d and 2d array
+
+//q3
+#include <stdio.h>
+void swap(int *ptr1, int *ptr2){
+    int value;
+    value = *ptr1;
+    *ptr1=*ptr2;
+    *ptr2 = value;
+    
+}
+
+int main(){
+    int a=1, b=2;
+
+    printf("Before swap = %d || %d ", a, b);
+    swap(&a, &b);
+    printf("After swap = %d || %d ", a, b);
+    return 0;
+}
