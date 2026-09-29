@@ -41,3 +41,20 @@ int main(){
     printf("After swap = %d || %d ", a, b);
     return 0;
 }
+
+//q4
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14
+
+int main(){
+    float volume, r;
+
+    printf("Enter the value of radius = ");
+    scanf("%f", &r);
+
+    volume = 4/3 * PI * pow(r, 3);
+    
+    printf("\n\nThe Volume of the sphere is = %.2f cm", volume);
+    return 0;
+}
