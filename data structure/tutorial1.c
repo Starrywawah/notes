@@ -1,6 +1,6 @@
 //do not run 
 
-//q1
+//q1 
 #include <stdio.h>
 printf("Enter interger : ");
     scanf("%d", &ans1);
@@ -21,9 +21,9 @@ printf("Enter interger : ");
 return 0;
 }
 
-//q2, same as q1 but use 1d and 2d array
+//q2, same as q1 but use 1d and 2d array (unfinished)
 
-//q3
+//q3 
 #include <stdio.h>
 void swap(int *ptr1, int *ptr2){
     int value;
@@ -42,7 +42,7 @@ int main(){
     return 0;
 }
 
-//q4
+//q4 
 #include <stdio.h>
 #include <math.h>
 #define PI 3.14
@@ -59,7 +59,7 @@ int main(){
     return 0;
 }
 
-//q5
+//q5 (unfinished)
 #include <stdio.h>
 
 void mergeArray(arr1[], arr2[], arr3[]){
@@ -82,4 +82,23 @@ int main(){
     return 0;
 }
 
-//q6
+//q6 (unfinished)
+#include <stdio.h>
+
+int main(){
+    int arr[10], i, num, f, even;
+
+    printf("Enter 10 interger values = ");
+    for (i=0 ; i<10 ; i++){
+        scanf("%d", &arr[10]);   
+    }
+
+    printf ("Enter a number to finf frequency= ");
+    for(i = 0 ; i<10 ; i++){
+        if(arr[i] == number){
+            f++;
+        }
+    }
+    return 0;
+}
+
