@@ -58,3 +58,28 @@ int main(){
     printf("\n\nThe Volume of the sphere is = %.2f cm", volume);
     return 0;
 }
+
+//q5
+#include <stdio.h>
+
+void mergeArray(arr1[], arr2[], arr3[]){
+    int i;
+
+    for(i =0 ; i)
+}
+
+int main(){
+    int arr1[], arr2[], arr3[];
+
+    printf("Enter first 3 interger values = ");
+    scanf("%d", &arr1[]);
+    printf("Enter second 3 interger values = ");
+    scanf("%d", &arr2[]);
+
+    mergeArray();
+    
+    printf("\n\nResult of merging the values = %d", arr3[]);
+    return 0;
+}
+
+//q6
