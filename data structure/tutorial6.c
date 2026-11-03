@@ -1,12 +1,6 @@
 //Q1
 #include <stdio.h>
 
-
-#include <stdio.h>
-
-
-#include <stdio.h>
-
 int main(){
   int arr1[] = {1,3,5,7}, arr2[] = {2,4,6,8}, temp[8], i=0, j=0, k=0;
   
@@ -170,4 +164,151 @@ int main(){
   
   
   return 0;
+}
+
+//Q4
+#include <stdio.h> 
+
+void display(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int before(int a, int b, int ascending)
+{
+    if (ascending)
+        return a < b;
+    else
+        return a > b;
+}
+
+int lomutoPartition(int arr[], int low, int high,
+                    int ascending)
+{
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++)
+    {
+        if (!before(pivot, arr[j], ascending))
+        {
+            i++;
+
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    printf("Pivot %d: ", pivot);
+    display(arr, 9);
+
+    return i + 1;
+}
+
+int hoarePartition(int arr[], int low, int high,
+                   int ascending)
+{
+    int pivot = arr[low];
+
+    int i = low - 1;
+    int j = high + 1;
+
+    while (1)
+    {
+        do
+        {
+            i++;
+        }
+        while (before(arr[i], pivot, ascending));
+
+        do
+        {
+            j--;
+        }
+        while (before(pivot, arr[j], ascending));
+
+        if (i >= j)
+            break;
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    printf("Pivot %d: ", pivot);
+    display(arr, 9);
+
+    return j;
+}
+
+void quickSortLomuto(int arr[], int low, int high,
+                     int ascending)
+{
+    if (low < high)
+    {
+        int p = lomutoPartition(arr, low, high,
+                                ascending);
+
+        quickSortLomuto(arr, low, p - 1, ascending);
+        quickSortLomuto(arr, p + 1, high, ascending);
+    }
+}
+
+void quickSortHoare(int arr[], int low, int high,
+                    int ascending)
+{
+    if (low < high)
+    {
+        int p = hoarePartition(arr, low, high,
+                               ascending);
+
+        quickSortHoare(arr, low, p, ascending);
+        quickSortHoare(arr, p + 1, high, ascending);
+    }
+}
+
+int main(){
+  int original[] = {1, 0, 695, 3, -256, -5, 214, 44, 55;, arr[9];
+   for (int method = 1; method <= 2; method++)
+      {
+          for (int order = 1; order >= 0; order--)
+          {
+              for (int i = 0; i < 9; i++)
+              {
+                  arr[i] = original[i];
+              }
+  
+              printf("\n================================\n");
+  
+              printf("%s - %s\n",
+                     method == 1 ? "Lomuto" : "Hoare",
+                     order == 1 ? "Ascending" : "Descending");
+  
+              printf("Initial array: ");
+              display(arr, 9);
+  
+              if (method == 1)
+              {
+                  quickSortLomuto(arr, 0, 8, order);
+              }
+              else
+              {
+                  quickSortHoare(arr, 0, 8, order);
+              }
+  
+              printf("Sorted array:  ");
+              display(arr, 9);
+          }
+      }
+
+    return 0;
 }
