@@ -144,3 +144,30 @@ int main() {
 
     return 0;
 }
+
+//Q3
+#include <stdio.h>
+
+void negative (int arr[], int n){
+  if (arr[i]<0){
+    int temp = arr [i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    j++;
+  }
+}
+
+int main(){
+  int arr[] = {-2,1,4,-1,5,6,-5,-3,7,8}, n = sizeof(arr)/sizeof(arr[0]), i;
+
+  void negative (arr[], n);
+
+  printf("Output : ");
+  for (i = 0 ; i < n ; i++){
+    prints ("%d", arr[i]);
+  }
+
+  
+  
+  return 0;
+}
